@@ -1,1 +1,9 @@
-<p>pizza-menu works!</p>
+<p>pizza-menu works!</p> 
+<span>Backend: https://www.npmjs.com/package/json-server</span>
+<br><br>
+<div *ngFor="let item of menu">
+    <li> {{ item.title }} <button (click)="onklick(item)">Add to Cart</button> <-- just a console.log output</li>
+</div>
+<hr>
+<b>RAW JSON OUTPUT:</b> {{ menu | json }}
+<hr>

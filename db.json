@@ -17,6 +17,12 @@
         "title": "Pizza Schinken",
         "description": "Mit Käse und Schinken",
         "complete": false
+      },
+      {
+        "id": 4,
+        "title": "Pizza Quattro Formaggi",
+        "description": "Mit vier Käsesorten",
+        "complete": false
       }
     ]
   }
