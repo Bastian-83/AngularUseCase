@@ -1,0 +1,22 @@
+{
+    "pizzas": [
+      {
+        "id": 1,
+        "title": "Pizza Margherita",
+        "description": "Nur mit Käse",
+        "complete": false
+      },
+      {
+        "id": 2,
+        "title": "Pizza Salami",
+        "description": "Mit Käse und Salami",
+        "complete": false
+      },
+      {
+        "id": 3,
+        "title": "Pizza Schinken",
+        "description": "Mit Käse und Schinken",
+        "complete": false
+      }
+    ]
+  }
