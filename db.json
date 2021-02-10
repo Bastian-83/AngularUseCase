@@ -4,25 +4,33 @@
         "id": 1,
         "title": "Pizza Margherita",
         "description": "Nur mit Käse",
+        "price": 5.5,
         "complete": false
       },
       {
         "id": 2,
         "title": "Pizza Salami",
         "description": "Mit Käse und Salami",
+        "price": 6.0,
         "complete": false
       },
       {
         "id": 3,
         "title": "Pizza Schinken",
         "description": "Mit Käse und Schinken",
+        "price": 6.5,
         "complete": false
       },
       {
         "id": 4,
         "title": "Pizza Quattro Formaggi",
         "description": "Mit vier Käsesorten",
+        "price": 7.0,
         "complete": false
       }
+    ],
+
+    "orders": [
+
     ]
   }
