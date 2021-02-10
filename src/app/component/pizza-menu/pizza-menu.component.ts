@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../service/menu.service';
 
 @Component({
@@ -7,18 +7,20 @@ import { MenuService } from '../../service/menu.service';
   styleUrls: ['./pizza-menu.component.css']
 })
 export class PizzaMenuComponent implements OnInit {
-   @Input() menu:any = [];
+  menu: any = [];
+  orders: any = [];
 
   constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
-    this.menuService.getMenu().subscribe(menu => {
-      this.menu = menu;
-    });
+    this.menuService.getMenu().subscribe(menu => { this.menu = menu; });
+    // this.menuService.getOrders().subscribe(data => { this.orders = data; });
+    // this.menuService.$itemsChange.subscribe(data => { this.orders = data });
   }
 
-  onklick(item) {
+  onClick(item) {
     console.log(item);
+    this.menuService.addItem(item);
   }
 
 }
