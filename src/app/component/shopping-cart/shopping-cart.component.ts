@@ -12,7 +12,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
-    this.menuService.getOrders().subscribe(data => {this.orders = data;});
+    //this.menuService.getOrders().subscribe(data => {this.orders = data;});
     this.menuService.$itemsChange.subscribe(data => {this.orders = data});
   }
   

@@ -19,7 +19,6 @@ export class PizzaMenuComponent implements OnInit {
   }
 
   onClick(item) {
-    console.log(item);
     this.menuService.addItem(item);
   }
 
