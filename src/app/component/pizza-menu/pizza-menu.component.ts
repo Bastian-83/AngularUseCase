@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/service/cart.service';
 import { MenuService } from '../../service/menu.service';
+import { Pizza } from '../../service/menu.service';
+
 
 @Component({
   selector: 'app-pizza-menu',
@@ -8,22 +11,15 @@ import { MenuService } from '../../service/menu.service';
 })
 export class PizzaMenuComponent implements OnInit {
   menu: any = [];
-  orders: any = [];
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.menuService.getMenu().subscribe(menu => { this.menu = menu; });
-    this.menuService.getOrders().subscribe(data => { this.orders = data; });
-    this.menuService.$itemsChange.subscribe(data => { this.orders = data });
   }
 
-  ngOnDestroy(){
-    //this.menuService.$itemsChange.unsubscribe();
-  }
-
-  onClick(item) {
-    this.menuService.addItem(item);
+  addToCart(item: Pizza) {
+    this.cartService.addToCart(item);
   }
 
 }

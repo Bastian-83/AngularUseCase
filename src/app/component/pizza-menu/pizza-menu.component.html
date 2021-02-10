@@ -1,9 +1,17 @@
-<p>pizza-menu works!</p> 
-<span>Backend: https://www.npmjs.com/package/json-server:</span>
-<!-- <b>RAW JSON OUTPUT:</b> {{ menu | json }} -->
-<br><br>
-<div *ngFor="let item of menu">
-    <li> {{ item.title }} - {{ item.price }}€ <button (click)="onClick(item)">Add to Cart</button></li>
+<div class="container">
+    <h2>Pizzamenü:</h2>
+    <div class="row row-cols-4">
+        <div *ngFor="let item of menu" class="col">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top"
+                    src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }} </h5>
+                    <p class="card-text">{{ item.description }} - {{ item.price | currency }}</p>
+                    <button (click)="addToCart(item)" class="btn btn-dark">Hinzufügen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<br>
-<!-- <b>RAW JSON OUTPUT:</b> {{ menu | json }} -->

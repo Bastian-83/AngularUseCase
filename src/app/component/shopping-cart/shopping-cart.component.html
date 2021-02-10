@@ -1,4 +1,28 @@
-<p>shopping-cart works!</p>
-<div  *ngFor="let item of orders" >
-    <li>{{ item.title }} {{ item.price }}€ </li>
+<div class="container">
+<h2>WarenKorb:</h2>
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Preiß</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of orders">
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+                <tr *ngIf="orders.length > 0">
+                    <th> - </th>
+                    <td> Summe: </td>
+                    <td> totalSum </td>
+                </tr>
+            </tbody>
+        </table>
+        <button *ngIf="orders.length > 0" (click)="onClick()" class="btn btn-block btn-success"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> Bestellung absenden </button>
+    </div>
+
 </div>

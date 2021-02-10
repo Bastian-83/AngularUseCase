@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from 'src/app/service/menu.service';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,22 +7,21 @@ import { MenuService } from 'src/app/service/menu.service';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  orders;
+  orders: any = [];
 
-  constructor(private menuService: MenuService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    console.log('Start....');
-    this.menuService.getOrders();
-    console.log('2nd');
-    this.menuService.$itemsChange.subscribe(data => {
-      console.log(data);
-      this.orders = data
-    });
+    this.orders = this.cartService.orderList; //bad workaround! -> falsche variante
+    this.cartService.itemsChange$.subscribe(data => {this.orders = data});
   }
 
   ngOnDestroy(){
     //this.menuService.$itemsChange.unsubscribe();
   }
   
+  onClick() {
+    this.cartService.orderFood();
+  }
+
 }
