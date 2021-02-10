@@ -18,6 +18,10 @@ export class PizzaMenuComponent implements OnInit {
     // this.menuService.$itemsChange.subscribe(data => { this.orders = data });
   }
 
+  ngOnDestroy(){
+    this.menuService.$itemsChange.unsubscribe();
+  }
+
   onClick(item) {
     this.menuService.addItem(item);
   }

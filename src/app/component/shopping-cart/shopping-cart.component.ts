@@ -15,5 +15,9 @@ export class ShoppingCartComponent implements OnInit {
     //this.menuService.getOrders().subscribe(data => {this.orders = data;});
     this.menuService.$itemsChange.subscribe(data => {this.orders = data});
   }
+
+  ngOnDestroy(){
+    this.menuService.$itemsChange.unsubscribe();
+  }
   
 }
