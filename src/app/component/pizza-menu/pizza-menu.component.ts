@@ -14,12 +14,12 @@ export class PizzaMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuService.getMenu().subscribe(menu => { this.menu = menu; });
-    // this.menuService.getOrders().subscribe(data => { this.orders = data; });
-    // this.menuService.$itemsChange.subscribe(data => { this.orders = data });
+    this.menuService.getOrders().subscribe(data => { this.orders = data; });
+    this.menuService.$itemsChange.subscribe(data => { this.orders = data });
   }
 
   ngOnDestroy(){
-    this.menuService.$itemsChange.unsubscribe();
+    //this.menuService.$itemsChange.unsubscribe();
   }
 
   onClick(item) {

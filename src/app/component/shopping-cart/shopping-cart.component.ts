@@ -12,12 +12,17 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
-    //this.menuService.getOrders().subscribe(data => {this.orders = data;});
-    this.menuService.$itemsChange.subscribe(data => {this.orders = data});
+    console.log('Start....');
+    this.menuService.getOrders();
+    console.log('2nd');
+    this.menuService.$itemsChange.subscribe(data => {
+      console.log(data);
+      this.orders = data
+    });
   }
 
   ngOnDestroy(){
-    this.menuService.$itemsChange.unsubscribe();
+    //this.menuService.$itemsChange.unsubscribe();
   }
   
 }
