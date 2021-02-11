@@ -10,6 +10,7 @@ import { OrderService } from 'src/app/service/order.service';
 export class OrdersComponent implements OnInit {
 
   orderList = [];
+  selectedItemFromList: Pizza;
 
   constructor(private oderService: OrderService) { }
 
@@ -20,6 +21,12 @@ export class OrdersComponent implements OnInit {
 
   complete(item: Pizza) {
     item.complete = true;
-    console.log(item);
+    this.oderService.completeOrder(item);
   }
+
+  selectItemFromList(item: Pizza) {
+    this.selectedItemFromList = item;
+    console.log('selected Pizza: ' + JSON.stringify(item));
+  }
+
 }
