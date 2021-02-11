@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,7 +10,7 @@ import { CartService } from 'src/app/service/cart.service';
 export class ShoppingCartComponent implements OnInit {
   orders: any = [];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private oderService: OrderService) { }
 
   ngOnInit(): void {
     this.orders = this.cartService.orderList; //bad workaround! -> falsche variante
@@ -20,8 +21,11 @@ export class ShoppingCartComponent implements OnInit {
     //this.menuService.$itemsChange.unsubscribe();
   }
 
-  onClick() {
-    this.cartService.orderFood();
+  onClick(orders) {
+    this.oderService.orderFood(orders);
+    while(orders.length > 0) {
+      orders.pop();
+  }
   }
 
   getSum(orders): number {
