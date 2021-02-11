@@ -16,9 +16,6 @@ export interface Pizza {
 })
 export class MenuService {
 
-  itemsChange$ = new Subject<Pizza>();
-  orderList: any = [];
-
   constructor(private http: HttpClient) { }
 
   getMenu() {
