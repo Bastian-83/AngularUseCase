@@ -13,15 +13,7 @@ export class CartService {
   itemsChange$ = new Subject<any>();
   orderList: any = [];
 
-  constructor(private http: HttpClient) { }
-
-  // getOrders() {
-  //   return this.http.get('http://localhost:3000/orders')
-  //     .pipe(map(data => {
-  //       this.orderList = data;
-  //       this.itemsChange$.next(this.orderList);
-  //     }));
-  // }
+  constructor() { }
 
   addToCart(item: Pizza) {
     this.orderList.push(item);
