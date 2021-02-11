@@ -24,4 +24,13 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.orderFood();
   }
 
+  getSum(orders): number {
+    let totalSum = 0;
+    orders.forEach(element => {
+      totalSum = totalSum + element.price
+    });
+    console.log(totalSum);
+    return totalSum;
+  }
+
 }

@@ -1,5 +1,5 @@
 <div class="container">
-<h2>WarenKorb:</h2>
+    <h2>WarenKorb:</h2>
     <div class="row">
         <table class="table">
             <thead class="thead-dark">
@@ -16,13 +16,14 @@
                     <td>{{ item.price }}</td>
                 </tr>
                 <tr *ngIf="orders.length > 0">
-                    <th> - </th>
-                    <td> Summe: </td>
-                    <td> totalSum </td>
+                    <th><b> - </b></th>
+                    <td><b> Summe: </b></td>
+                    <td><b> {{ getSum(orders) }} </b></td>
                 </tr>
             </tbody>
         </table>
-        <button *ngIf="orders.length > 0" (click)="onClick()" class="btn btn-block btn-success"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> Bestellung absenden </button>
+        <button *ngIf="orders.length > 0" (click)="onClick()" class="btn btn-block btn-success"><i
+                class="fa fa-caret-square-o-right" aria-hidden="true"></i> Bestellung absenden </button>
     </div>
 
 </div>
