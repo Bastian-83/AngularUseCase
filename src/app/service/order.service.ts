@@ -10,24 +10,23 @@ export class OrderService {
 
   itemsChange$ = new Subject<any>();
   orderList: any = [];
+  postId;
 
   constructor(private http: HttpClient) { }
 
   orderFood(itemList: Pizza[]) {
-    console.log('itemList:' + itemList);
-
     itemList.forEach(element => {
       this.orderList.push(element);
     });
     this.itemsChange$.next(this.orderList);
-    console.log('Wurde dem Warenkorb hinzugefügt: ' + JSON.stringify(itemList));
   }
 
   completeOrder(item: Pizza) {
     const headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
     if (item.complete) {
-      console.log('Item to Store in DB (in json): ' + JSON.stringify(item));
-      this.http.post('http://localhost:3000/orders/', JSON.stringify(item), headers );
+      this.http.post<Pizza>('http://localhost:3000/orders', item, headers ).subscribe(data => {
+      //nothing to do here
+    })
     } else {
       console.log('cant complete this order');
     }
@@ -40,6 +39,4 @@ export class OrderService {
   //       this.itemsChange$.next(this.orderList);
   //     }));
   // }
-
-
 }

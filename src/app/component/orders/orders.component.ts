@@ -22,11 +22,15 @@ export class OrdersComponent implements OnInit {
   complete(item: Pizza) {
     item.complete = true;
     this.oderService.completeOrder(item);
+
+    for (let i = 0; i < this.orderList.length; i++) {
+      if (item.pid === this.orderList[i].pid) {
+        this.orderList.splice(i, 1);
+      }
+    }
   }
 
   selectItemFromList(item: Pizza) {
     this.selectedItemFromList = item;
-    console.log('selected Pizza: ' + JSON.stringify(item));
   }
-
 }

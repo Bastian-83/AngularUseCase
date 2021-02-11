@@ -1,15 +1,5 @@
-<!-- <div class="container">
-    <div class="d-flex justify-content-center">
-        <div>
-            <br>
-            <img
-                src="https://www.nicepng.com/png/full/152-1526045_site-under-construction-png-free-under-construction-image.png">
-            <br>
-        </div>
-    </div>
-</div>
-<hr> -->
-<div class="container">
+<div class="container bg-light">
+    <br>
     <h2> Eingegangene Bestellungen:</h2>
     <div class="row">
         <div class="col-8">
@@ -24,16 +14,16 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of orderList; let i = index" (click)="selectItemFromList(orderList[i])">
-                        <th scope="row">{{ item.id }}</th>
-                        <td>{{ i+1 }} {{ item.title }}</td>
+                        <th scope="row">{{ i+1 }}</th>
+                        <td>{{ item.pid }} - {{ item.title }}</td>
                         <td>{{ item.price }}</td>
-                        <td> <button class="btn btn-dark">Fertigstellen</button></td>
+                        <td> <button (click)="complete(item)" class="btn btn-dark">Fertigstellen</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-4">
-            <div *ngIf="selectedItemFromList" selectedItemFromList class="card" style="width: 18rem;">
+            <div *ngIf="selectedItemFromList && orderList.length > 0" class="card" style="width: 18rem;">
                 <img class="card-img-top"
                     src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&auto=format&fit=crop&w=500&q=60"
                     alt="Card image cap">
@@ -43,6 +33,17 @@
                     <button (click)="complete(selectedItemFromList)" class="btn btn-dark">Fertigstellen</button>
                 </div>
             </div>
+            <div *ngIf="!selectedItemFromList || orderList.length < 1" class="card" style="width: 18rem;">
+                <img class="card-img-top"
+                    src="https://images.unsplash.com/photo-1606265698533-c17fc6003934?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emElMjBvdmVufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> Keine Pizza ausgewählt. </h5>
+                    <p class="card-text"> - </p>
+                    <button (click)="complete(selectedItemFromList)" [disabled]="!selectedItemFromList || orderList.length < 1" class="btn btn-dark">Fertigstellen</button>
+                </div>
+            </div>
+            <br>
         </div>
     </div>
 </div>

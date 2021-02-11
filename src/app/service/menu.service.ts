@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 
 export interface Pizza {
-  "id": number;
+  "pid": number;
   "title": string;
   "description": string;
   "price": number;

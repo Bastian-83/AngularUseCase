@@ -18,15 +18,12 @@ export class CartService {
   addToCart(item: Pizza) {
     this.orderList.push(item);
     this.itemsChange$.next(this.orderList);
-    console.log('Wurde dem Warenkorb hinzugefügt: ' + JSON.stringify(item));
   }
 
   orderFood() {
-    console.log('Bestellung wurde abgeschickt: ' + JSON.stringify(this.orderList));
     while (this.orderList.length > 0) {
       this.orderList.pop();
     }
-    console.log('Warenkorb wurde geleert: ' + JSON.stringify(this.orderList));
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
+import { Pizza } from 'src/app/service/menu.service';
 import { OrderService } from 'src/app/service/order.service';
 
 @Component({
@@ -17,15 +18,23 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.itemsChange$.subscribe(data => { this.orders = data });
   }
 
-  ngOnDestroy() {
-    //this.menuService.$itemsChange.unsubscribe();
-  }
-
   onClick(orders) {
     this.oderService.orderFood(orders);
-    while(orders.length > 0) {
+    while (orders.length > 0) {
       orders.pop();
+    }
   }
+
+  addOne(item: Pizza) {
+    this.orders.push(item);
+  }
+
+  removeOne(item: Pizza) {
+    for (let i = 0; i < this.orders.length; i++) {
+      if (item.pid === this.orders[i].pid) {
+        this.orders.splice(i, 1);
+      }
+    } 
   }
 
   getSum(orders): number {
