@@ -13,13 +13,13 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.orders = this.cartService.orderList; //bad workaround! -> falsche variante
-    this.cartService.itemsChange$.subscribe(data => {this.orders = data});
+    this.cartService.itemsChange$.subscribe(data => { this.orders = data });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     //this.menuService.$itemsChange.unsubscribe();
   }
-  
+
   onClick() {
     this.cartService.orderFood();
   }
@@ -29,7 +29,6 @@ export class ShoppingCartComponent implements OnInit {
     orders.forEach(element => {
       totalSum = totalSum + element.price
     });
-    console.log(totalSum);
     return totalSum;
   }
 

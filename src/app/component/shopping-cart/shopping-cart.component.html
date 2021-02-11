@@ -15,7 +15,7 @@
                     <td>{{ item.title }}</td>
                     <td>{{ item.price }}</td>
                 </tr>
-                <tr *ngIf="orders.length > 0">
+                <tr *ngIf="orders.length > 0" class="bg-warning">
                     <th><b> - </b></th>
                     <td><b> Summe: </b></td>
                     <td><b> {{ getSum(orders) }} </b></td>
