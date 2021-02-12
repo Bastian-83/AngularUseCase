@@ -1,9 +1,10 @@
-<div class="container bg-light">
+<br>
+<div class="container bg-light border border-primary rounded">
     <br>
     <h2> Eingegangene Bestellungen:</h2>
     <div class="row">
         <div class="col-8">
-            <table class="table table-hover">
+            <table class="table thead-dark table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -16,7 +17,7 @@
                     <tr *ngFor="let item of orderList; let i = index" (click)="selectItemFromList(orderList[i])">
                         <th scope="row">{{ i+1 }}</th>
                         <td>{{ item.pid }} - {{ item.title }}</td>
-                        <td>{{ item.price }}</td>
+                        <td>{{ item.price | currency :'EUR':true }}</td>
                         <td> <button (click)="complete(item)" class="btn btn-dark">Fertigstellen</button></td>
                     </tr>
                 </tbody>
@@ -29,7 +30,7 @@
                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> {{ selectedItemFromList.title }} </h5>
-                    <p class="card-text"> {{ selectedItemFromList.description }}  - {{ selectedItemFromList.price | currency }} </p>
+                    <p class="card-text"> {{ selectedItemFromList.description }}  - {{ selectedItemFromList.price | currency :'EUR':true }} </p>
                     <button (click)="complete(selectedItemFromList)" class="btn btn-dark">Fertigstellen</button>
                 </div>
             </div>

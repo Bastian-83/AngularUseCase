@@ -1,8 +1,9 @@
-<div class="container bg-light ">
+<br>
+<div class="container bg-light border border-primary rounded">
     <br>
     <h2>WarenKorb:</h2>
     <div class="row">
-        <table class="table table-hover">
+        <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -15,7 +16,7 @@
                 <tr *ngFor="let item of orders">
                     <th scope="row">{{ item.pid }}</th>
                     <td>{{ item.title }}</td>
-                    <td>{{ item.price }}</td>
+                    <td>{{ item.price | currency :'EUR':true }}</td>
                     <td>
                         <button (click)="addOne(item)" type="button" class="btn btn-secondary btn-sm">+</button>
                         <button (click)="removeOne(item)" type="button" class="btn btn-secondary btn-sm">-</button>
@@ -24,7 +25,7 @@
                 <tr *ngIf="orders.length > 0" class="bg-warning">
                     <th><b> - </b></th>
                     <td><b> Summe: </b></td>
-                    <td><b> {{ getSum(orders) }} </b></td>
+                    <td><b> {{ getSum(orders) | currency :'EUR':true }} </b></td>
                     <th><b> - </b></th>
                 </tr>
             </tbody>
